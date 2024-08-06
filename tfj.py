@@ -47,6 +47,7 @@ print(f'Mean Squared Error: {mse}')
 print(f'R^2 Score: {r2}')
 print(f'Training Time: {training_time} seconds')
 
+#speed ?
 sample_data = data.sample(n=5)
 sample_X = sample_data[selected_columns]
 
