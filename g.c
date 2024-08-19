@@ -29,7 +29,6 @@ int main()
             if (c == 13)
             {
                 j[fi] == atof(token);
-                
             }
             if(c == 14)
             {
