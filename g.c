@@ -9,7 +9,6 @@ int main()
     double q[395];
     char l[200];
     int fi = 0;
-    int se = 7;
     FILE *f = fopen("student-mat.csv" , "r");
     if (f == NULL)
     {
