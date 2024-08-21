@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <lapacke.h>
 
 int main()
 {
     double j[2765];
     double q[395];
-    char l[200];
+    char l[209];
     int fi = 0;
     FILE *f = fopen("student-mat.csv" , "r");
     if (f == NULL)
@@ -38,29 +38,29 @@ int main()
             {
                 if (strcmp(token, "yes") == 0)
                 {
-                    j[fi + 2 * 395] = 1;
+                    j[fi + (2 * 395)] = 1;
                 }
                 else
                 {
-                    j[fi + 2 * 395] = 2;
+                    j[fi + (2 * 395)] = 0;
                 }
             }
             if (c == 29)
             {
-                j[fi + 3 * 395] = atof(token);
+                j[fi + (3 * 395)] = atof(token);
             }
             if (c == 30)
             {
-                j[fi + 4 * 395] = atof(token);
+                j[fi + (4 * 395)] = atof(token);
             }
             if (c == 31)
             {
-                j[fi + 5 * 395] = atof(token);
+                j[fi + (5 * 395)] = atof(token);
             }
             if (c == 32)
             {
                 q[fi] = atof(token);
-                j[fi + 6 * 395] = 1;
+                j[fi + (6 * 395)] = 1;
                 ++fi;
             }
             token = strtok(NULL , ";");
@@ -68,6 +68,8 @@ int main()
 
         }
     }
+    fclose(f);
+    
     
 
     return 0;
