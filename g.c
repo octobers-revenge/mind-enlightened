@@ -4,7 +4,6 @@
 #define LR 0.01
 #define s 395
 
-// Function to strip quotes from a token
 void strip_quotes(char *str) {
     size_t len = strlen(str);
     if (len > 1 && str[0] == '"' && str[len - 1] == '"') {
@@ -17,7 +16,7 @@ int main() {
     double grad[7] = {0, 0, 0, 0, 0, 0, 0};
     double pred[s];
     double real[s];
-    double data[6][s] = {0}; // Initialize to 0
+    double data[6][s] = {0}; 
     FILE *file = fopen("student-mat.csv", "r");
     if (!file) {
         perror("Failed to open file");
@@ -25,14 +24,14 @@ int main() {
     }
     int row = 0;
     char line[1024];
-    fgets(line, sizeof(line), file); // Skip the header line
+    fgets(line, sizeof(line), file); 
 
     while (fgets(line, sizeof(line), file)) {
         char *token;
         int col = 0;  
         token = strtok(line, ";");
         for (int i = 0; token && i < 33; i++) {
-            strip_quotes(token); // Strip quotes before further processing
+            strip_quotes(token); 
 
             if (i == 22) {  
                 if (strcmp(token, "yes") == 0) {
