@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #define LR 0.005
 #define s 395
 #define iter 1000
@@ -110,7 +111,7 @@ int main() {
 
     fclose(file);
 
-    
+    //example of how data is structured
     for(int i = 0; i < 5; i++) {
         printf("Row %d: ", i);
         for (int j = 0; j < 6; j++) {
@@ -119,12 +120,17 @@ int main() {
         printf("| Real: %.2f\n", real[i]);
     }
 
+    clock_t start_time = clock();
+
     
     for(int i = 0; i < 50000; i++){
         predictor(data, param, pred);
         err(pred, real);
         partial(data, param, pred, gradient);
     }
+
+    clock_t end_time = clock();
+    double elapsed_time = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
     printf("Intercept %f\n", param[0]);
     printf("StudyTime %f\n", param[1]);
     printf("Failures %f\n", param[2]);
@@ -132,6 +138,11 @@ int main() {
     printf("Abscences %f\n", param[4]);
     printf("G1 %f\n", param[5]);
     printf("G2 %f\n", param[6]);
+
+
+    printf("Training Time: %.2f seconds\n", elapsed_time);
+
+    
     return 0;
 
 }
